@@ -1,0 +1,20 @@
+{
+  "document": "receipt-1042",
+  "versions": {
+    "v1": {
+      "files": [
+        "page-001.png",
+        "page-002.png",
+        "page-003.png"
+      ]
+    },
+    "v2": {
+      "files": [
+        "page-001.png",
+        "page-002.png",
+        "page-003.png",
+        "page-004.png"
+      ]
+    }
+  }
+}

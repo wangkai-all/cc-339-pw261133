@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>扫描表格校对系统</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>扫描表格校对系统</h1>
+  <nav>
+    <button data-tab="review" class="active">校对</button>
+    <button data-tab="compare">版本对比</button>
+    <button data-tab="warehouse">入库记录</button>
+  </nav>
+  <div class="docbar">
+    文档 <input id="docId" value="receipt-1042">
+    <button id="syncBtn">拉取最新抽取</button>
+    <span id="revBadge" class="badge hidden"></span>
+  </div>
+</header>
+
+<main>
+  <!-- ============================ review tab ============================ -->
+  <section id="tab-review" class="tab active">
+    <div class="layout">
+      <div class="pane page-list">
+        <h2>页面</h2>
+        <ul id="pageList"></ul>
+      </div>
+      <div class="pane scan-pane">
+        <h2>原扫描页（证据图）</h2>
+        <div class="img-wrap">
+          <img id="scanImg" alt="原始扫描页">
+          <div id="overlay"></div>
+        </div>
+      </div>
+      <div class="pane cells-pane">
+        <h2>单元格校对</h2>
+        <div class="meta" id="pageMeta"></div>
+        <table id="cellTable">
+          <thead><tr><th>ID</th><th>OCR</th><th>置信度</th><th>校对值</th><th>合并判定</th><th>状态</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="actions">
+          <label>校对人 <input id="editor" value="reviewer-a"></label>
+          <button id="approveBtn" class="primary">校对通过并送入库</button>
+        </div>
+        <h3>修改/合并历史</h3>
+        <ul id="historyList" class="history"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ compare tab =========================== -->
+  <section id="tab-compare" class="tab">
+    <h2>新版本 vs 旧版本（逐单元格）</h2>
+    <button id="compareBtn">生成对比</button>
+    <div id="compareOut"></div>
+  </section>
+
+  <!-- =========================== warehouse tab ========================== -->
+  <section id="tab-warehouse" class="tab">
+    <h2>入库记录</h2>
+    <button id="whBtn">刷新入库记录</button>
+    <div id="whOut"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
